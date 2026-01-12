@@ -3,7 +3,7 @@ import os
 import json
 import numpy as np
 import pandas as pd
-import openai # Ensure openai library is imported to set global variables
+import openai
 import time
 import datetime
 from copy import deepcopy
@@ -22,13 +22,13 @@ openai.api_base = "http://localhost:8000/v1"
 # 2. Set model name (must match vLLM's --served-model-name)
 model = "log-copilot" 
 
-# 3. Test limit (set to 120 questions)
-TEST_LIMIT = 120
+# 3. Test limit (set to 1000 questions)
+TEST_LIMIT = 1000
 
 # ===========================================================
-
-questions_path = "TeleQnA.txt"
-save_path = os.path.join(model + "_answers.txt")
+question = "Research_overview_TeleQnA"
+questions_path = "Research_overview_TeleQnA.txt"
+save_path = os.path.join(model + question + "_answers.txt")
 
 n_questions = 40   # Batch size
 max_attempts = 5  # Max retries
@@ -60,7 +60,7 @@ if os.path.exists(save_path):
     print(f"Resuming from previous results. Already answered: {start}")
 else:
     results = {}
-    start = 0
+    start = 1
     categories = []
     correct = []
     print("Starting new evaluation.")
