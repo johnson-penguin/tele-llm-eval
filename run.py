@@ -31,6 +31,7 @@ questions_path = "Research_overview_TeleQnA.txt"
 save_path = os.path.join(model + question + "_answers.txt")
 
 n_questions = 40   # Batch size
+concurrent_users = 40
 max_attempts = 5  # Max retries
 
 print(f"Evaluating model: {model} on Local Server")
@@ -99,7 +100,7 @@ for start_id in range(start, end, n_questions):
     while attempts < max_attempts:
         try:
             # Call evaluation tool (this will hit the localhost API)
-            accepted_questions, parsed_predicted_answers = check_questions_with_val_output(selected_questions, model)
+            accepted_questions, parsed_predicted_answers = check_questions_with_val_output(selected_questions, model, concurrent_users)
             
             for q in selected_questions:  
                 # Ensure the returned result contains this question

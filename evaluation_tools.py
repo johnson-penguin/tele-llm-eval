@@ -89,7 +89,7 @@ def process_single_question(q_id, q_data, model):
             "answer": f"Error: {str(e)}"
         }, False
 
-def check_questions_with_val_output(questions_dict, model):
+def check_questions_with_val_output(questions_dict, model, concurrent_users):
     """
     Modified evaluation function: Uses ThreadPoolExecutor for parallel processing
     """
@@ -97,9 +97,7 @@ def check_questions_with_val_output(questions_dict, model):
     accepted_questions = []
     
     # Set parallel count (adjust based on VRAM size, typically 5-10 is safe)
-    MAX_WORKERS = 40
-    
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers = concurrent_users) as executor:
         # Submit all tasks
         future_to_qid = {
             executor.submit(process_single_question, q_id, q_data, model): q_id 
