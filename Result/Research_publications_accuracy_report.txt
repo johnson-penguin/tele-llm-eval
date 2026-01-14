@@ -1,0 +1,11 @@
+
+============================================================
+Accuracy Calculation Results
+============================================================
+Log File: log-copilotResearch_publications_TeleQnA_answers.txt
+Calculation Time: 2026-01-14 23:30:44
+Total Questions: 4499
+Correct Answers: 3354
+Incorrect Answers: 1145
+Accuracy: 74.55%
+============================================================

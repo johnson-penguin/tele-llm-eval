@@ -23,11 +23,11 @@ openai.api_base = "http://localhost:8000/v1"
 model = "log-copilot" 
 
 # 3. Test limit (set to 1000 questions)
-TEST_LIMIT = 1000
+TEST_LIMIT = 10000
 
 # ===========================================================
-question = "Research_overview_TeleQnA"
-questions_path = "Research_overview_TeleQnA.txt"
+question = "Research_publications_TeleQnA"
+questions_path = "Research_publications_TeleQnA.txt"
 save_path = os.path.join(model + question + "_answers.txt")
 
 n_questions = 40   # Batch size
@@ -61,7 +61,7 @@ if os.path.exists(save_path):
     print(f"Resuming from previous results. Already answered: {start}")
 else:
     results = {}
-    start = 1
+    start = 0
     categories = []
     correct = []
     print("Starting new evaluation.")
